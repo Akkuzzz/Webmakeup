@@ -1,0 +1,15 @@
+
+/* Persistent mobile admissions shortcut; footer clearance keeps it off the final links. */
+.mobile-sticky-apply { display: none; }
+@media (max-width: 700px) {
+  .mobile-sticky-apply { position: fixed; z-index: 80; left: 14px; right: 14px; bottom: calc(10px + env(safe-area-inset-bottom)); display: flex; min-height: 47px; align-items: center; justify-content: center; gap: 9px; border: 1px solid rgba(0,0,0,.08); background: var(--brand-blue); color: var(--white); box-shadow: 0 8px 24px rgba(0,0,0,.19); font-size: 10px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+  .mobile-sticky-apply:hover { background: #222A6D; }
+  .site-footer { padding-bottom: calc(90px + env(safe-area-inset-bottom)); }
+}
+
+.faculty-directory-note { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin: 16px 0 26px; color: var(--muted); font-size: 11px; }
+.faculty-directory-note a { display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; color: var(--brand-blue); font-weight: 700; }
+.faculty-card__image { position: relative; background: #E9EEF2; }
+.faculty-card__initials { position: absolute; inset: 0; display: grid; place-items: center; color: var(--brand-blue); background: #E9EEF2; font-family: var(--serif); font-size: 40px; }
+.faculty-card__image img { position: relative; z-index: 1; }
+@media (max-width: 700px) { .faculty-directory-note { align-items: flex-start; flex-direction: column; gap: 7px; margin: 12px 0 18px; } }

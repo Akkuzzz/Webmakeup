@@ -1,0 +1,14 @@
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Check, Compass, ExternalLink } from "lucide-react";
+import type { Facility } from "@/data/facilities";
+import { PageHero, SourceLink } from "@/components/ui";
+
+export function FacilityExperience({ facility }: { facility: Facility }) {
+  const related = ["library", "hostel", "cafeteria", "fitness", "transportation", "laboratories", "idea-lab", "computing", "robotics"].filter((slug) => slug !== facility.slug).slice(0, 4);
+  return <>
+    <PageHero eyebrow={`Campus facilities · ${facility.group}`} title={facility.title} description={facility.description} image={facility.image} crumbs={[{ label: "Facilities", href: "/facilities" }, { label: facility.title }]} />
+    <section className="section section--spacious facility-intro"><div className="narrow-copy"><p className="eyebrow"><span/>A part of everyday FISAT</p><h2>Space to learn.<br/><em>Room to grow.</em></h2><p>{facility.description}</p><SourceLink href={facility.officialUrl} label="Read current official details"/></div><div className="facility-info-card"><span className="facility-info-card__icon"><Compass size={22}/></span><p className="eyebrow">Good to know</p><h3>For current access and availability</h3><p>Hours, service availability and access guidance can change. Check with FISAT or the official facility page before you visit.</p><a className="button button--blue" href={facility.officialUrl} target="_blank" rel="noreferrer">Official FISAT page<ExternalLink size={15}/></a></div></section>
+    <section className="section section--paper facility-highlights"><div className="section-heading"><div><p className="eyebrow"><span/>In the FISAT community</p><h2>Explore around you.</h2><p className="section-heading__description">Campus spaces that make room for learning and life.</p></div></div><div className="facility-bullet-grid"><div><span><Check size={15}/></span><div><h3>Connected to campus</h3><p>Part of FISAT’s network of academic and student-life facilities.</p></div></div><div><span><Check size={15}/></span><div><h3>Made for participation</h3><p>Explore how this facility fits into a fuller campus experience.</p></div></div><div><span><Check size={15}/></span><div><h3>Details from the source</h3><p>Use the official FISAT page for changing schedules, access and current service details.</p></div></div></div><div className="facility-related">{related.map((slug) => <Link key={slug} href={`/facilities/${slug}`}>{slug.replaceAll("-", " ")}<ArrowUpRight size={15}/></Link>)}<Link href="/facilities">All facilities<ArrowRight size={15}/></Link></div></section>
+    <section className="section"><div className="official-note"><span className="official-note__check"><Check size={16}/></span><div><strong>Check the source before you go</strong><p>FISAT maintains current facility and contact information on its official website.</p></div><SourceLink href={facility.officialUrl}/></div></section>
+  </>;
+}

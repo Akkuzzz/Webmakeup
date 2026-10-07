@@ -1,0 +1,18 @@
+import type { Metadata } from "next";
+import { BedDouble, Wifi } from "lucide-react";
+import { FacilityTabs } from "@/components/FacilityTabs";
+import { PageHero, SectionHeading, SourceLink } from "@/components/ui";
+import { images } from "@/data/assets";
+import { officialSources } from "@/data/updates";
+import { pageMetadata } from "@/data/seo";
+
+export const metadata: Metadata =pageMetadata("FISAT Hostel — Accommodation & Amenities","Explore FISAT's four hostel blocks for boys and girls, verified accommodation capacity and campus residential amenities.");
+const tabs=[
+ {label:"Accommodation",heading:"Four residential blocks.",copy:"FISAT describes four hostel blocks: two for boys and two for girls, with accommodation for more than 1,300 students.",source:officialSources.hostel,sourceLabel:"Official FISAT hostel information"},
+ {label:"Amenities",heading:"Practical things for everyday living.",copy:"The official page lists Wi-Fi, laundry, a library or reading room, fitness and sports facilities, and mess services.",source:officialSources.hostel},
+ {label:"Dining",heading:"Mess and meals on campus.",copy:"FISAT lists mess facilities as part of its hostel amenities. For menus, meal schedules and current arrangements, contact the hostel office.",source:officialSources.hostel},
+ {label:"Wellness",heading:"Support matters.",copy:"The published hostel page mentions a clinic, ambulance and psychologist support. Verify current availability and contact procedures with FISAT.",source:officialSources.hostel},
+ {label:"Security",heading:"Wardens and campus security.",copy:"FISAT's hostel information describes wardens and security. Ask the institution for current rules, visitor policies and emergency procedures.",source:officialSources.hostel},
+ {label:"Rules",heading:"Check the current hostel guidance.",copy:"Hostel rules, fees, forms and admission arrangements may change. Use the current FISAT source rather than an old printed copy.",source:officialSources.admissions,sourceLabel:"Admissions and hostel applications"}
+];
+export default function HostelPage(){return <><PageHero eyebrow="Facilities · Residential life" title="HOME AWAY FROM HOME." description="Four hostel blocks and the everyday spaces that support life on campus." image={images.hostel} crumbs={[{label:"Facilities",href:"/facilities"},{label:"Hostel"}]}/><section className="section"><div className="container"><div className="hostel-metrics"><div><span>01</span><strong>Four blocks</strong><small>Two boys · two girls</small></div><div><span>02</span><strong>1,300+</strong><small>Accommodation capacity</small></div><div><span><Wifi size={17}/></span><strong>Campus living</strong><small>Wi-Fi, reading & wellness facilities</small></div></div><div className="facility-intro hostel-intro"><div className="narrow-copy"><p className="eyebrow"><span/>Life in Hormis Nagar</p><h2>Make this place<br/><em>feel like home.</em></h2><p>FISAT’s published information describes separate boys and girls hostels with mess, study, fitness and wellbeing provisions. Explore each aspect below and confirm current rules with the hostel office.</p><SourceLink href={officialSources.hostel} label="Current official hostel page"/></div><aside className="hostel-image-stack"><img src={images.hostel} alt="A FISAT residential hostel block" loading="lazy"/><img src={images.community} alt="Student community at FISAT" loading="lazy"/></aside></div><section className="hostel-tabs-section"><SectionHeading eyebrow="Know before you arrive" title="The details of daily life."/><FacilityTabs tabs={tabs}/></section></div></section></>;}

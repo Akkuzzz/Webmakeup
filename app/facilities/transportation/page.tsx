@@ -1,0 +1,11 @@
+import type { Metadata } from "next";
+import { BusFront } from "lucide-react";
+import { RouteExplorer } from "@/components/RouteExplorer";
+import { PageHero, SectionHeading, SourceLink } from "@/components/ui";
+import { images } from "@/data/assets";
+import { facilitySource } from "@/data/facilities";
+import { officialSources, contactDetails } from "@/data/updates";
+import { pageMetadata } from "@/data/seo";
+
+export const metadata: Metadata =pageMetadata("FISAT Transportation & Conveyance","Explore FISAT's campus conveyance service. Search for a published bus route or stop and contact FISAT for current schedules and boarding details.");
+export default function TransportationPage(){return <><PageHero eyebrow="Facilities · Getting here" title="GET THERE. SAFELY." description="A route enquiry experience for current FISAT conveyance information." image={images.campusAerial} crumbs={[{label:"Facilities",href:"/facilities"},{label:"Transportation"}]}/><section className="section"><div className="container"><div className="transport-intro"><div><p className="eyebrow"><span/>FISAT conveyance</p><h2>Find the route<br/><em>that gets you there.</em></h2><p>The official FISAT facilities page describes a fleet of 30 buses on various city routes. Route names, stops and timings were not available in the verified material for this page, so the search below will direct you to the official source rather than inventing results.</p></div><div className="transport-fleet-card"><span><BusFront size={23}/></span><strong>30-bus fleet</strong><small>As stated on FISAT’s official facilities page</small><SourceLink href={facilitySource} label="Verify current conveyance details"/></div></div><div className="transport-panel"><SectionHeading eyebrow="Route explorer" title="Search official route information." description="Search results reflect only information published in the verified route source."/><RouteExplorer/></div><div className="transport-contact"><strong>Need a current boarding point or schedule?</strong><p>Call the FISAT office to confirm route availability, stops and timings.</p><a href={`tel:${contactDetails.phone.replace(/[^+\d]/g,"")}`}>{contactDetails.phone}</a><SourceLink href={officialSources.contact} label="Contact details"/></div></div></section></>;}
